@@ -51,5 +51,13 @@
         <action
             android:id="@+id/action_compostingDetails_to_dashboardFragment"
             app:destination="@id/dashboardFragment" />
+        <action
+            android:id="@+id/action_compostingDetails_to_addCompost"
+            app:destination="@id/addCompost" />
     </fragment>
+    <fragment
+        android:id="@+id/addCompost"
+        android:name="com.example.composting.detailScreens.AddCompost"
+        android:label="add_compost_fragment"
+        tools:layout="@layout/add_compost_fragment" />
 </navigation>

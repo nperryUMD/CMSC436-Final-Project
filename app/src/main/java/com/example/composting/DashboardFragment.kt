@@ -41,6 +41,9 @@ class DashboardFragment : Fragment() {
 
         val data : ArrayList<Data> = Datasource().load()
         val adapter = RecyclerViewAdapter(this.requireContext(), data)
+        binding.coinUpperText.text = "Coins: " + "0"
+        binding.trophyUpperText.text = "Trophies: " + "0"
+
         recyclerView = binding.mainMenuScroll
         recyclerView.layoutManager = LinearLayoutManager(this.requireContext())
         recyclerView.adapter = adapter
