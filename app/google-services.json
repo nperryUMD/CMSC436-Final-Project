@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "480189020725",
+    "project_id": "composting-354fb",
+    "storage_bucket": "composting-354fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:480189020725:android:05d656b6a78321ab4c4f7c",
+        "android_client_info": {
+          "package_name": "com.example.composting"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "480189020725-du6qn7dfdj6ab5j4fb8a5fsm7792jceh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzIC-oA97nbsNev1Sw9CafajsvjnKOlWo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "480189020725-du6qn7dfdj6ab5j4fb8a5fsm7792jceh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
