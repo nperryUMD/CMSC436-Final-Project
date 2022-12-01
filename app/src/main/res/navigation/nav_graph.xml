@@ -36,7 +36,20 @@
     </fragment>
     <fragment
         android:id="@+id/dashboardFragment"
-        android:name="com.example.composting.login.DashboardFragment"
+        android:name="com.example.composting.DashboardFragment"
         android:label="dashboard_fragment"
-        tools:layout="@layout/dashboard_fragment" />
+        tools:layout="@layout/dashboard_fragment" >
+        <action
+            android:id="@+id/action_dashboardFragment_to_compostingDetails"
+            app:destination="@id/compostingDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/compostingDetails"
+        android:name="com.example.composting.detailScreens.compostingDetails"
+        android:label="fragment_composting_details"
+        tools:layout="@layout/composting_details_fragment" >
+        <action
+            android:id="@+id/action_compostingDetails_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+    </fragment>
 </navigation>

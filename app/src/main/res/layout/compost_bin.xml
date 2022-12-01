@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    app:cardBackgroundColor="#87CC77">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
+            android:background="#070707"
+            android:orientation="horizontal"
+            tools:visibility="visible">
+
+            <TextView
+                android:id="@+id/totalCompostedText"
+                android:layout_width="141dp"
+                android:layout_height="96dp"
+                android:background="#CC87CC77"
+                android:clipToOutline="false"
+                android:gravity="center_horizontal"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/turnDaysTextView"
+                android:layout_width="122dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#87CC77"
+                android:gravity="center_horizontal"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/compostHealthTextView"
+                android:layout_width="127dp"
+                android:layout_height="96dp"
+                android:background="#CC87CC77"
+                android:gravity="center_horizontal"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:src="@drawable/compost_bin_pic" />
+
+        <Button
+            android:id="@+id/compostingCardBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Explore more..."
+            android:background="#683919"/>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

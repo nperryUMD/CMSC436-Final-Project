@@ -1,17 +1,22 @@
-package com.example.composting.login
+package com.example.composting
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.composting.R
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.composting.databinding.DashboardFragmentBinding
+import com.example.composting.mainScroll.*
 import com.google.firebase.auth.FirebaseAuth
 
 class DashboardFragment : Fragment() {
+
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,6 +38,13 @@ class DashboardFragment : Fragment() {
 
             findNavController().popBackStack(R.id.mainFragment, false)
         }
+
+        val data : ArrayList<Data> = Datasource().load()
+        val adapter = RecyclerViewAdapter(this.requireContext(), data)
+        recyclerView = binding.mainMenuScroll
+        recyclerView.layoutManager = LinearLayoutManager(this.requireContext())
+        recyclerView.adapter = adapter
+        recyclerView.setHasFixedSize(true)
 
         // Return the root view.
         return binding.root
