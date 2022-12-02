@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/layout/add_compost_fragment.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/compost_items_fragment.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/composting_details_fragment.xml" value="0.1" />
         <entry key="app/src/main/res/layout/dashboard_fragment.xml" value="0.11593342078613778" />
       </map>
     </option>

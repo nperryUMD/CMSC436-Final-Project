@@ -10,4 +10,6 @@ class Datasource {
         dataList.add(AnalyticsCard(RecyclerViewAdapter.VIEW_TYPE_TWO, "4. Hi! I am in View 4"))
         return dataList
     }
+
+
 }
