@@ -117,6 +117,8 @@ class RecyclerViewAdapter(context: Context, list: ArrayList<Data>) :
         RecyclerView.ViewHolder(itemView) {
         var coins: TextView = itemView.findViewById(R.id.coinCountText)
         var trophies: TextView = itemView.findViewById(R.id.trophyCountText)
+        var percentageText: TextView = itemView.findViewById(R.id.milestonePercentageText)
+        var fractionText: TextView = itemView.findViewById(R.id.milestoneFractionText)
         var milestone: ProgressBar = itemView.findViewById(R.id.mileStoneProgressBar)
         var btn: Button = itemView.findViewById(R.id.gameCardBtn)
         fun bind(position: Int) {
@@ -125,6 +127,8 @@ class RecyclerViewAdapter(context: Context, list: ArrayList<Data>) :
                 coins.text = "5"
                 trophies.text = "10"
                 milestone.progress = 50
+                percentageText.text = "50%"
+                fractionText.text = "10/20"
                 btn.setOnClickListener(){
                     itemView.findNavController().navigate(R.id.gameMainScreen);
                 }

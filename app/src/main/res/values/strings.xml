@@ -21,4 +21,5 @@
     <string name="compost_added">has been added to your compost bin!</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="progress_towards_your_next_milestone">Progress towards your next milestone</string>
 </resources>
