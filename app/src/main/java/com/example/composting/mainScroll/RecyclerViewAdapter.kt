@@ -10,6 +10,8 @@ import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.composting.R
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 import com.jjoe64.graphview.GraphView
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
@@ -28,7 +30,7 @@ class RecyclerViewAdapter(context: Context, list: ArrayList<Data>) :
 
     private val context: Context = context
     var list: ArrayList<Data> = list
-
+    private lateinit var  database : DatabaseReference
     private inner class View1ViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
         var total: TextView = itemView.findViewById(R.id.totalCompostedText)
@@ -36,11 +38,25 @@ class RecyclerViewAdapter(context: Context, list: ArrayList<Data>) :
         var health: TextView = itemView.findViewById(R.id.rightCompostItemText)
         var btn: Button = itemView.findViewById(R.id.compostingCardBtn)
         fun bind(position: Int) {
+            val userid = FirebaseAuth.getInstance().currentUser!!.uid
+            database = FirebaseDatabase.getInstance().getReference().child("Users").child(userid)
+
             if(list[position] is CompostCard){
                 val  recyclerViewModel = list[position] as CompostCard
-                total.text = "Composted\n" + recyclerViewModel.totalCompostEntries
-                turn.text = "Turn in\n" + recyclerViewModel.turnDays + " days"
-                health.text = "Health\n" + recyclerViewModel.compostHealth
+                database?.addValueEventListener(object : ValueEventListener {
+
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        total.text = "Composted\n" + dataSnapshot.child("totalCompostEntries").getValue().toString()
+                        turn.text = "Turn in\n"  + dataSnapshot.child("turnDays").getValue().toString()
+                        health.text = "Health\n" +  dataSnapshot.child("compostHealth").getValue().toString()
+
+                    }
+
+                    override fun onCancelled(databaseError: DatabaseError) {
+                    }
+
+                })
+
                 btn.setOnClickListener(){
                     itemView.findNavController().navigate(R.id.compostingDetails);
                 }
@@ -175,4 +191,6 @@ class RecyclerViewAdapter(context: Context, list: ArrayList<Data>) :
     override fun getItemViewType(position: Int): Int {
         return list[position].viewType
     }
+
+
 }

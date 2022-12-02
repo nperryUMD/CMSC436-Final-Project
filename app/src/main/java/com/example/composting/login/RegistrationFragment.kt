@@ -14,6 +14,8 @@ import com.example.composting.mainScroll.UserCard
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
+import android.util.Log
 
 class RegistrationFragment : Fragment(){
     private var validator = Validators()

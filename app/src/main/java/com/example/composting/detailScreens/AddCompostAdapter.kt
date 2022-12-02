@@ -1,15 +1,15 @@
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
-import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.composting.R
 import com.example.composting.detailScreens.classes.CompostItems
 import com.google.android.material.card.MaterialCardView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 
 class AddCompostAdapter(context: Context, list: ArrayList<CompostItems>, selection: Int) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -17,7 +17,7 @@ class AddCompostAdapter(context: Context, list: ArrayList<CompostItems>, selecti
     var selection : Int = selection
     private val context: Context = context
     var list: ArrayList<CompostItems> = list
-
+    private lateinit var  database : DatabaseReference
 
     private inner class View1ViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
@@ -29,6 +29,22 @@ class AddCompostAdapter(context: Context, list: ArrayList<CompostItems>, selecti
             box.setOnClickListener() {
 
                 // TODO
+
+                val userid = FirebaseAuth.getInstance().currentUser!!.uid
+                database = FirebaseDatabase.getInstance().getReference().child("Users").child(userid)
+
+                database?.addListenerForSingleValueEvent(object : ValueEventListener {
+
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        var healthVal = dataSnapshot.child("compostHealth").getValue(Int::class.java)
+                        var numOfEntries = dataSnapshot.child("totalCompostEntries").getValue(Int::class.java)
+                        database.child("compostHealth").setValue(healthVal.toString().toInt() + health.text.toString().toInt())
+                        database.child("totalCompostEntries").setValue(numOfEntries.toString().toInt()+1)
+                    }
+
+                    override fun onCancelled(databaseError: DatabaseError) {
+                    }
+                })
                 // Add health to compost
 
                 var toastString = recyclerViewModel.name + " " + context.getString(R.string.compost_added)
