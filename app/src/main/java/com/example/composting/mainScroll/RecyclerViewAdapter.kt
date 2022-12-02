@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -31,8 +32,8 @@ class RecyclerViewAdapter(context: Context, list: ArrayList<Data>) :
     private inner class View1ViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
         var total: TextView = itemView.findViewById(R.id.totalCompostedText)
-        var turn: TextView = itemView.findViewById(R.id.turnDaysTextView)
-        var health: TextView = itemView.findViewById(R.id.compostHealthTextView)
+        var turn: TextView = itemView.findViewById(R.id.leftCompostItemText)
+        var health: TextView = itemView.findViewById(R.id.rightCompostItemText)
         var btn: Button = itemView.findViewById(R.id.compostingCardBtn)
         fun bind(position: Int) {
             if(list[position] is CompostCard){
@@ -116,11 +117,17 @@ class RecyclerViewAdapter(context: Context, list: ArrayList<Data>) :
         RecyclerView.ViewHolder(itemView) {
         var coins: TextView = itemView.findViewById(R.id.coinCountText)
         var trophies: TextView = itemView.findViewById(R.id.trophyCountText)
+        var milestone: ProgressBar = itemView.findViewById(R.id.mileStoneProgressBar)
+        var btn: Button = itemView.findViewById(R.id.gameCardBtn)
         fun bind(position: Int) {
             if(list[position] is GameCard) {
                 val recyclerViewModel = list[position] as GameCard
-                coins.text = "0"
-                trophies.text = "0"
+                coins.text = "5"
+                trophies.text = "10"
+                milestone.progress = 50
+                btn.setOnClickListener(){
+                    itemView.findNavController().navigate(R.id.gameMainScreen);
+                }
             }
         }
     }
