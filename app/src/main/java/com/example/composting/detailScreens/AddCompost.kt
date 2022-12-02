@@ -1,33 +1,27 @@
 package com.example.composting.detailScreens
 
+import AddCompostAdapter
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.composting.R
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.composting.databinding.AddCompostFragmentBinding
+import com.example.composting.detailScreens.classes.CompostItems
+import com.example.composting.detailScreens.classes.Datasource
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [AddCompost.newInstance] factory method to
- * create an instance of this fragment.
- */
 class AddCompost : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private lateinit var binding: AddCompostFragmentBinding
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
@@ -35,26 +29,42 @@ class AddCompost : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.add_compost_fragment, container, false)
-    }
+        binding = AddCompostFragmentBinding.inflate(inflater, container, false)
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AddCompost.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AddCompost().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+        val tabLayout : TabLayout = binding.tabLayout
+        tabLayout.addTab(tabLayout.newTab().setText("Food"))
+        tabLayout.addTab(tabLayout.newTab().setText("Vegetation"))
+        tabLayout.addTab(tabLayout.newTab().setText("Live"))
+
+        var selection : Int = 1
+
+        fun rebuild() {
+            val data : ArrayList<CompostItems> = Datasource().load()
+            val adapter = AddCompostAdapter(this.requireContext(), data, selection)
+
+            recyclerView = binding.compostListRecyclerView
+            recyclerView.layoutManager = LinearLayoutManager(this.requireContext())
+            recyclerView.adapter = adapter
+            recyclerView.setHasFixedSize(true)
+        }
+
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                selection = when (tab?.text){
+                    "Food" -> 1
+                    "Vegetation" -> 2
+                    else -> 3
                 }
+                rebuild()
             }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
+        })
+
+        rebuild()
+
+        // Return the root view.
+        return binding.root
     }
 }

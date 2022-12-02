@@ -5,11 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.Navigator
 import androidx.navigation.findNavController
 import com.example.composting.R
 import com.example.composting.databinding.CompostingDetailsFragmentBinding
-import com.example.composting.databinding.RegistrationFragmentBinding
 
 class compostingDetails : Fragment() {
 

@@ -14,7 +14,11 @@
     <string name="login_toast">Please enter email...</string>
     <string name="password_toast">Please enter password!</string>
     <string name="logout">Logout</string>
+    <string name="food_string_tabs">Food</string>
+    <string name="vegetation_string_tabs">Vegetation</string>
+    <string name="live_animals_string_tabs">Live Animals</string>
+    <string name="how_s_your_compost_bin_today">How\'s your compost bin today?</string>
+    <string name="compost_added">has been added to your compost bin!</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="how_s_your_compost_bin_today">How\'s your compost bin today?</string>
 </resources>
