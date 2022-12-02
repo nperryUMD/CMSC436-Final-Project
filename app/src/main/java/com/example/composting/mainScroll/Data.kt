@@ -23,5 +23,16 @@ data class CalendarCard (
 
 data class GameCard (
     override var viewType: Int,
-    var textData: String = ""
+    var coins: Int,
+    var trophies: Int
 ) : Data()
+
+
+data class UserCard (
+    override var viewType: Int,
+    var totalCompostEntries: Int,
+    var turnDays: Int,
+    var compostHealth: Int,
+    var coins: Int,
+    var trophies: Int
+    ) : Data ()

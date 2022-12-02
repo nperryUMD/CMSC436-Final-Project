@@ -10,12 +10,15 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.composting.R
 import com.example.composting.databinding.RegistrationFragmentBinding
+import com.example.composting.mainScroll.UserCard
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class RegistrationFragment : Fragment(){
     private var validator = Validators()
     private lateinit var auth: FirebaseAuth
-
+    private lateinit var  database : DatabaseReference
     /** Binding to XML layout */
     private lateinit var binding: RegistrationFragmentBinding
 
@@ -25,7 +28,8 @@ class RegistrationFragment : Fragment(){
 
         auth = requireNotNull(FirebaseAuth.getInstance())
 
-        binding.register.setOnClickListener { registerNewUser() }
+        binding.register.setOnClickListener { registerNewUser()
+            }
 
         // Return the root view.
         return binding.root
@@ -51,7 +55,6 @@ class RegistrationFragment : Fragment(){
                 getString(R.string.invalid_password),
                 Toast.LENGTH_LONG
             ).show()
-
             return
         }
 
@@ -61,6 +64,7 @@ class RegistrationFragment : Fragment(){
             .addOnCompleteListener { task ->
                 binding.progressBar.visibility = View.GONE
                 if (task.isSuccessful) {
+                    newUserData()
                     Toast.makeText(
                         requireContext(),
                         getString(R.string.register_success_string),
@@ -79,4 +83,12 @@ class RegistrationFragment : Fragment(){
                 }
             }
     }
+    private fun newUserData(){
+        val user = FirebaseAuth.getInstance().currentUser
+        val userid = user!!.uid
+        database = FirebaseDatabase.getInstance().getReference("Users")
+        database.child(userid).setValue(UserCard(0,0,0,0,0,0))
+
+    }
+
 }

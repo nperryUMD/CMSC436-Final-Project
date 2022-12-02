@@ -1,7 +1,6 @@
 package com.example.composting
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,13 +10,19 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.composting.databinding.DashboardFragmentBinding
-import com.example.composting.mainScroll.*
+import com.example.composting.mainScroll.Data
+import com.example.composting.mainScroll.Datasource
+import com.example.composting.mainScroll.GameCard
+import com.example.composting.mainScroll.RecyclerViewAdapter
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+
 
 class DashboardFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
-
+    private lateinit var database: DatabaseReference
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -39,8 +44,10 @@ class DashboardFragment : Fragment() {
             findNavController().popBackStack(R.id.mainFragment, false)
         }
 
-        val data : ArrayList<Data> = Datasource().load()
+       val data : ArrayList<Data> = Datasource().load()
         val adapter = RecyclerViewAdapter(this.requireContext(), data)
+
+
         binding.coinUpperText.text = "Coins: " + "0"
         binding.trophyUpperText.text = "Trophies: " + "0"
 
