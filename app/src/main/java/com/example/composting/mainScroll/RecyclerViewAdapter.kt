@@ -22,16 +22,15 @@ class RecyclerViewAdapter(context: Context, list: ArrayList<Data>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
-        const val VIEW_TYPE_ONE = 1
-        const val VIEW_TYPE_TWO = 2
-        const val VIEW_TYPE_THREE = 3
-        const val VIEW_TYPE_FOUR = 4
+        const val VIEW_COMPOST_BIN = 1
+        const val VIEW_ANALYTICS_BIN = 2
+        const val VIEW_GAME_BIN = 4
     }
 
     private val context: Context = context
     var list: ArrayList<Data> = list
     private lateinit var  database : DatabaseReference
-    private inner class View1ViewHolder(itemView: View) :
+    private inner class ViewCompostViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
         var total: TextView = itemView.findViewById(R.id.totalCompostedText)
         var turn: TextView = itemView.findViewById(R.id.leftCompostItemText)
@@ -64,7 +63,7 @@ class RecyclerViewAdapter(context: Context, list: ArrayList<Data>) :
         }
     }
 
-    private inner class View2ViewHolder(itemView: View) :
+    private inner class ViewAnalyticsViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
         fun bind(position: Int) {
             if(list[position] is AnalyticsCard){
@@ -78,8 +77,8 @@ class RecyclerViewAdapter(context: Context, list: ArrayList<Data>) :
                     arrayOf(
                         // on below line we are adding
                         // each point on our x and y axis.
-                        DataPoint(0.0, 1.0),
-                        DataPoint(1.0, 3.0),
+                        DataPoint(1.0, 1.0),
+                        DataPoint(5.0, 3.0),
                         DataPoint(2.0, 4.0),
                         DataPoint(3.0, 9.0),
                         DataPoint(4.0, 6.0),
@@ -116,20 +115,7 @@ class RecyclerViewAdapter(context: Context, list: ArrayList<Data>) :
         }
     }
 
-    private inner class View3ViewHolder(itemView: View) :
-        RecyclerView.ViewHolder(itemView) {
-        var btn: Button = itemView.findViewById(R.id.calendarCardBtn)
-        fun bind(position: Int) {
-            if(list[position] is CalendarCard) {
-                val recyclerViewModel = list[position] as CalendarCard
-                btn.setOnClickListener(){
-                    itemView.findNavController().navigate(R.id.compostingDetails);
-                }
-            }
-        }
-    }
-
-    private inner class View4ViewHolder(itemView: View) :
+    private inner class ViewGameViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
         var coins: TextView = itemView.findViewById(R.id.coinCountText)
         var trophies: TextView = itemView.findViewById(R.id.trophyCountText)
@@ -153,20 +139,16 @@ class RecyclerViewAdapter(context: Context, list: ArrayList<Data>) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return if (viewType == VIEW_TYPE_ONE) {
-            View1ViewHolder(
+        return if (viewType == VIEW_COMPOST_BIN) {
+            ViewCompostViewHolder(
                 LayoutInflater.from(context).inflate(R.layout.compost_bin, parent, false)
             )
-        }else if (viewType == VIEW_TYPE_TWO){
-            View2ViewHolder(
+        }else if (viewType == VIEW_ANALYTICS_BIN){
+            ViewAnalyticsViewHolder(
                 LayoutInflater.from(context).inflate(R.layout.analytics_bin, parent, false)
             )
-        }else if (viewType == VIEW_TYPE_THREE){
-            View3ViewHolder(
-                LayoutInflater.from(context).inflate(R.layout.calendar_bin, parent, false)
-            )
         }else{
-            View4ViewHolder(
+            ViewGameViewHolder(
                 LayoutInflater.from(context).inflate(R.layout.game_bin, parent, false)
             )
         }
@@ -177,14 +159,12 @@ class RecyclerViewAdapter(context: Context, list: ArrayList<Data>) :
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (list[position].viewType === VIEW_TYPE_ONE) {
-            (holder as View1ViewHolder).bind(position)
-        }else if (list[position].viewType === VIEW_TYPE_TWO){
-            (holder as View2ViewHolder).bind(position)
-        }else if(list[position].viewType === VIEW_TYPE_THREE){
-            (holder as View3ViewHolder).bind(position)
-        } else {
-            (holder as View4ViewHolder).bind(position)
+        if (list[position].viewType === VIEW_COMPOST_BIN) {
+            (holder as ViewCompostViewHolder).bind(position)
+        }else if (list[position].viewType === VIEW_ANALYTICS_BIN){
+            (holder as ViewAnalyticsViewHolder).bind(position)
+        }else {
+            (holder as ViewGameViewHolder).bind(position)
         }
     }
 

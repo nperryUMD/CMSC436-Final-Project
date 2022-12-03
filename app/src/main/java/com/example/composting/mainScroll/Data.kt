@@ -16,11 +16,6 @@ data class AnalyticsCard (
     var textData: String = ""
 ) : Data()
 
-data class CalendarCard (
-    override var viewType: Int,
-    var textData: String = ""
-) : Data()
-
 data class GameCard (
     override var viewType: Int,
     var coins: Int,
