@@ -12,9 +12,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.composting.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.google.firebase.database.ktx.getValue
 import com.jjoe64.graphview.GraphView
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
+import android.util.Log
 
 lateinit var lineGraphView: GraphView
 
@@ -135,6 +137,9 @@ class RecyclerViewAdapter(context: Context, list: ArrayList<Data>) :
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
                         coins.text = dataSnapshot.child("coins").getValue().toString()
                         trophies.text = dataSnapshot.child("trophies").getValue().toString()
+                        milestone.progress = dataSnapshot.child("milestoneProgress").getValue().toString().toInt()
+                        percentageText.text = ((dataSnapshot.child("milestoneProgress").getValue().toString().toDouble()/100)*100).toString() + "%"
+                        fractionText.text = ((dataSnapshot.child("milestoneProgress").getValue().toString().toInt())).toString() + "/100"
 
                     }
 
@@ -143,9 +148,8 @@ class RecyclerViewAdapter(context: Context, list: ArrayList<Data>) :
 
                 })
 
-                milestone.progress = 50
-                percentageText.text = "50%"
-                fractionText.text = "10/20"
+
+
                 btn.setOnClickListener(){
                     itemView.findNavController().navigate(R.id.gameMainScreen);
                 }

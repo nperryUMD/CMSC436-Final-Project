@@ -29,5 +29,12 @@ data class UserCard (
     var turnDays: Int,
     var compostHealth: Int,
     var coins: Int,
-    var trophies: Int
+    var trophies: Int,
+    var milestones: Int,
+    var milestoneProgress: Int,
+    var coinMultiplier: Double,
+    var trophyMultiplier: Double,
+    var carbonTotal: Int,
+    var nitrogenTotal:Int,
+    var liveTotal:Int
     ) : Data ()

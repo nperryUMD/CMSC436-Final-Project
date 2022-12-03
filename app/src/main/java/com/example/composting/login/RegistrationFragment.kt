@@ -89,8 +89,10 @@ class RegistrationFragment : Fragment(){
         val user = FirebaseAuth.getInstance().currentUser
         val userid = user!!.uid
         database = FirebaseDatabase.getInstance().getReference("Users")
-        database.child(userid).setValue(UserCard(0,0,0,0,0,0))
+        database.child(userid).setValue(UserCard(0,0,0,0,0,0,
+       0,0,0.0,0.0,0,0,0) )
 
     }
+
 
 }

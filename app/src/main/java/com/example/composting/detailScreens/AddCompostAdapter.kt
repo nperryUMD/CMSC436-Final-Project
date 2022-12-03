@@ -10,6 +10,9 @@ import com.example.composting.detailScreens.classes.CompostItems
 import com.google.android.material.card.MaterialCardView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import android.widget.ProgressBar
+import com.google.firebase.database.ktx.getValue
+
 
 class AddCompostAdapter(context: Context, list: ArrayList<CompostItems>, selection: Int) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -38,9 +41,37 @@ class AddCompostAdapter(context: Context, list: ArrayList<CompostItems>, selecti
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
                         var healthVal = dataSnapshot.child("compostHealth").getValue(Int::class.java)
                         var numOfEntries = dataSnapshot.child("totalCompostEntries").getValue(Int::class.java)
+                        var coins = dataSnapshot.child("coins").getValue().toString().toInt()
+                        var trophies = dataSnapshot.child("trophies").getValue().toString().toInt()
+                        var currMilestones = dataSnapshot.child("milestones").getValue().toString().toInt()
+                        var currMilestoneProgress = dataSnapshot.child("milestoneProgress").getValue().toString().toInt()
+                        var currTrophies = dataSnapshot.child("trophies").getValue().toString().toInt()
+
+                        //update information when items added
                         database.child("compostHealth").setValue(healthVal.toString().toInt() + health.text.toString().toInt())
                         database.child("totalCompostEntries").setValue(numOfEntries.toString().toInt()+1)
-                    }
+                        database.child("milestoneProgress").setValue(currMilestoneProgress+10)
+
+                        //update coin values
+                           if (dataSnapshot.child("coinMultiplier").getValue().toString().toDouble() == 1.1) {
+                                database.child("coins").setValue(coins + (1.1 * 10))
+                            } else {
+
+                               database.child("coins").setValue(coins + 10)
+                           }
+                        //update trophy values and milestone when reach milestone
+                            if(dataSnapshot.child("milestoneProgress").getValue().toString().toInt() >=100){
+                                database.child("milestones").setValue(currMilestones+1)
+                                database.child("milestoneProgress").setValue(0)
+
+                                if(dataSnapshot.child("trophyMultiplier").getValue().toString().toDouble() == 1.1){
+                                    database.child("trophies").setValue(trophies+ (1.1*1))
+                                }
+                                else{
+                                    database.child("trophies").setValue(trophies+1)
+                                }
+                            }
+                        }
 
                     override fun onCancelled(databaseError: DatabaseError) {
                     }
