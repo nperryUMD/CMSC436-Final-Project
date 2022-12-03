@@ -32,6 +32,7 @@ class RecyclerViewAdapter(context: Context, list: ArrayList<Data>) :
     private val context: Context = context
     var list: ArrayList<Data> = list
     private lateinit var  database : DatabaseReference
+
     private inner class ViewCompostViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
         var total: TextView = itemView.findViewById(R.id.totalCompostedText)
@@ -59,7 +60,7 @@ class RecyclerViewAdapter(context: Context, list: ArrayList<Data>) :
                 })
 
                 btn.setOnClickListener(){
-                    itemView.findNavController().navigate(R.id.compostingDetails);
+                    itemView.findNavController().navigate(R.id.CompostingDetails);
                 }
             }
         }
