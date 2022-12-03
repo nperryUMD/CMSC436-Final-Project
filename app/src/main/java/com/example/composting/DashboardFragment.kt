@@ -15,8 +15,7 @@ import com.example.composting.mainScroll.Datasource
 import com.example.composting.mainScroll.GameCard
 import com.example.composting.mainScroll.RecyclerViewAdapter
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 
 
 class DashboardFragment : Fragment() {
@@ -31,6 +30,8 @@ class DashboardFragment : Fragment() {
         // Use the provided ViewBinding class to inflate
         // the layout and then return the root view.
         val binding = DashboardFragmentBinding.inflate(inflater, container, false)
+        val userid = FirebaseAuth.getInstance().currentUser!!.uid
+        database = FirebaseDatabase.getInstance().getReference().child("Users").child(userid)
 
         binding.logout.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
@@ -48,8 +49,18 @@ class DashboardFragment : Fragment() {
         val adapter = RecyclerViewAdapter(this.requireContext(), data)
 
 
-        binding.coinUpperText.text = "Coins: " + "0"
-        binding.trophyUpperText.text = "Trophies: " + "0"
+        database?.addValueEventListener(object : ValueEventListener {
+
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                binding.coinUpperText.text = "Coins: "  + dataSnapshot.child("coins").getValue().toString()
+                binding.trophyUpperText.text = "Trophies: "  + dataSnapshot.child("trophies").getValue().toString()
+
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+            }
+
+        })
 
         recyclerView = binding.mainMenuScroll
         recyclerView.layoutManager = LinearLayoutManager(this.requireContext())

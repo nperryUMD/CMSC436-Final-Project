@@ -126,8 +126,23 @@ class RecyclerViewAdapter(context: Context, list: ArrayList<Data>) :
         fun bind(position: Int) {
             if(list[position] is GameCard) {
                 val recyclerViewModel = list[position] as GameCard
-                coins.text = "5"
-                trophies.text = "10"
+                val userid = FirebaseAuth.getInstance().currentUser!!.uid
+                database = FirebaseDatabase.getInstance().getReference().child("Users").child(userid)
+
+
+                database?.addValueEventListener(object : ValueEventListener {
+
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        coins.text = dataSnapshot.child("coins").getValue().toString()
+                        trophies.text = dataSnapshot.child("trophies").getValue().toString()
+
+                    }
+
+                    override fun onCancelled(databaseError: DatabaseError) {
+                    }
+
+                })
+
                 milestone.progress = 50
                 percentageText.text = "50%"
                 fractionText.text = "10/20"
