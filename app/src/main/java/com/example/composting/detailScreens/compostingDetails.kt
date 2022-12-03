@@ -15,12 +15,7 @@ import com.google.firebase.database.*
 class compostingDetails : Fragment() {
 
     private lateinit var binding: CompostingDetailsFragmentBinding
-    private lateinit var  database : DatabaseReference
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

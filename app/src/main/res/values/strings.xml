@@ -21,4 +21,12 @@
     <string name="compost_added">has been added to your compost bin!</string>
     <string name="progress_towards_your_next_milestone">Progress towards your next milestone</string>
     <string name="explore_more">Explore more...</string>
+    <string name="_50_coins_1_1_on_all_new_coins">50 coins = 1.1 on all new coins</string>
+    <string name="upgrade_coins">Upgrade coins!</string>
+    <string name="buy">Buy!</string>
+    <string name="buy_trophies">Buy Trophies!</string>
+    <string name="_10_coins_1_trophy">10 Coins = 1 Trophy</string>
+    <string name="upgrade_trophies">Upgrade Trophies!</string>
+    <string name="_10_trophies_1_1_on_all_new_trophies">10 Trophies = 1.1 on all new Trophies</string>
+    <string name="bin_upgrade">Bin Upgrade!</string>
 </resources>

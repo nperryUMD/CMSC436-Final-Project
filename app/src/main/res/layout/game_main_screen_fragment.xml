@@ -23,13 +23,13 @@
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:background="#000000">
+                android:background="@color/secondary_distant">
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
-                    android:background="#DAAB00">
+                    android:background="@color/accent_vivid_sky_blue">
 
                     <TableLayout
                         android:layout_width="match_parent"
@@ -85,13 +85,13 @@
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:background="#000000">
+                android:background="@color/secondary_distant">
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
-                    android:background="#DAAB00">
+                    android:background="@color/accent_congo_pink">
 
                     <TableLayout
                         android:layout_width="match_parent"
@@ -147,13 +147,13 @@
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:background="#000000">
+                android:background="@color/secondary_distant">
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
-                    android:background="#DAAB00">
+                    android:background="@color/accent_dark_pastel_green">
 
                     <TableLayout
                         android:layout_width="match_parent"
@@ -210,19 +210,19 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="125dp"
-            android:background="#34393939">
+            android:background="@color/secondary_dark">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="3dp"
-                android:background="#E4E4E4">
+                android:layout_margin="1dp"
+                android:background="@color/secondary_light">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="Buy Trophies!"
+                    android:text="@string/buy_trophies"
                     android:textSize="29dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -232,7 +232,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="10 Coins = 1 Trophy"
+                    android:text="@string/_10_coins_1_trophy"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -242,9 +242,10 @@
                     app:layout_constraintVertical_bias="0.836" />
 
                 <Button
+                    android:id="@+id/btnBuyTrophies"
                     android:layout_width="112dp"
                     android:layout_height="53dp"
-                    android:text="Buy!"
+                    android:text="@string/buy"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.948"
@@ -262,19 +263,19 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="125dp"
-            android:background="#34393939">
+            android:background="@color/secondary_dark">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="3dp"
-                android:background="#E4E4E4">
+                android:layout_margin="1dp"
+                android:background="@color/secondary_light">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="Upgrade coins!"
+                    android:text="@string/upgrade_coins"
                     android:textSize="29dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -284,7 +285,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="50 coins = 1.1 on all new coins"
+                    android:text="@string/_50_coins_1_1_on_all_new_coins"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -294,9 +295,10 @@
                     app:layout_constraintVertical_bias="0.836" />
 
                 <Button
+                    android:id="@+id/btnUpgradeCoins"
                     android:layout_width="112dp"
                     android:layout_height="53dp"
-                    android:text="Buy!"
+                    android:text="@string/buy"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.948"
@@ -314,20 +316,20 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="125dp"
-            android:background="#34393939">
+            android:background="@color/secondary_dark">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="3dp"
-                android:background="#E4E4E4">
+                android:layout_margin="1dp"
+                android:background="@color/secondary_light">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="Upgrade Trophies!"
-                    android:textSize="28dp"
+                    android:text="@string/upgrade_trophies"
+                    android:textSize="28sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -338,7 +340,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="10 Trophies = 1.1 on all new Trophies"
+                    android:text="@string/_10_trophies_1_1_on_all_new_trophies"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -347,10 +349,10 @@
                     app:layout_constraintVertical_bias="0.826" />
 
                 <Button
-                    android:id="@+id/button7"
+                    android:id="@+id/btnUpgradeTrophies"
                     android:layout_width="112dp"
                     android:layout_height="53dp"
-                    android:text="Buy!"
+                    android:text="@string/buy"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.939"
@@ -368,20 +370,20 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="125dp"
-            android:background="#34393939">
+            android:background="@color/secondary_dark">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="3dp"
-                android:background="#E4E4E4">
+                android:layout_margin="1dp"
+                android:background="@color/secondary_light">
 
                 <TextView
                     android:id="@+id/textView11"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Bin Upgrade!"
-                    android:textSize="29dp"
+                    android:text="@string/bin_upgrade"
+                    android:textSize="29sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.075"
@@ -403,10 +405,10 @@
                     app:layout_constraintVertical_bias="0.836" />
 
                 <Button
-                    android:id="@+id/button4"
+                    android:id="@+id/btnUpgradeBin"
                     android:layout_width="112dp"
                     android:layout_height="53dp"
-                    android:text="Buy!"
+                    android:text="@string/buy"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.948"

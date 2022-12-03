@@ -8,6 +8,11 @@
     <color name="secondary">#ecc096</color>
     <color name="secondary_dark">#b89068</color>
     <color name="secondary_text">#000000</color>
+    <color name="secondary_distant">#796f66</color>
+
+    <color name="accent_congo_pink">#FE938C</color>
+    <color name="accent_dark_pastel_green">#20BF55</color>
+    <color name="accent_vivid_sky_blue">#63D2FF</color>
 
     <color name="ripple_light">#ffffff</color>
     <color name="ripple_dark">#000000</color>
