@@ -77,8 +77,8 @@ class RecyclerViewAdapter(context: Context, list: ArrayList<Data>) :
                     arrayOf(
                         // on below line we are adding
                         // each point on our x and y axis.
-                        DataPoint("5/4", 1.0),
-                        DataPoint(6/5, 3.0),
+                        DataPoint(1.0, 1.0),
+                        DataPoint(5.0, 3.0),
                         DataPoint(2.0, 4.0),
                         DataPoint(3.0, 9.0),
                         DataPoint(4.0, 6.0),
