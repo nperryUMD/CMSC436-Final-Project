@@ -45,6 +45,9 @@
         <action
             android:id="@+id/action_dashboardFragment_to_compostingDetails2"
             app:destination="@id/CompostingDetails" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_leaderboardScreen"
+            app:destination="@id/leaderboardScreen" />
     </fragment>
     <fragment
         android:id="@+id/addCompost"
@@ -63,8 +66,9 @@
         <action
             android:id="@+id/action_compostingDetails2_to_addCompost"
             app:destination="@id/addCompost" />
-        <action
-            android:id="@+id/action_compostingDetails2_to_dashboardFragment"
-            app:destination="@id/dashboardFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/leaderboardScreen"
+        android:name="com.example.composting.leaderboardScreens.LeaderboardScreen"
+        android:label="LeaderboardScreen" />
 </navigation>

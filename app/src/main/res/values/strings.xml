@@ -34,4 +34,7 @@
     <string name="totals"><u>Total</u></string>
     <string name="add_more_items">Add more items</string>
     <string name="turned_compost">Turned compost</string>
+    <string name="leaderboard">Leaderboard</string>
+    <string name="see_how_you_stack_up">See how you stack up!</string>
+    <string name="leaderboard_pic">leaderboard pic</string>
 </resources>
