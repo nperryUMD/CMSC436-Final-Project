@@ -40,23 +40,11 @@
         android:label="dashboard_fragment"
         tools:layout="@layout/dashboard_fragment" >
         <action
-            android:id="@+id/action_dashboardFragment_to_compostingDetails"
-            app:destination="@id/compostingDetails" />
-        <action
             android:id="@+id/action_dashboardFragment_to_gameMainScreen"
             app:destination="@id/gameMainScreen" />
-    </fragment>
-    <fragment
-        android:id="@+id/compostingDetails"
-        android:name="com.example.composting.detailScreens.compostingDetails"
-        android:label="fragment_composting_details"
-        tools:layout="@layout/composting_details_fragment" >
         <action
-            android:id="@+id/action_compostingDetails_to_dashboardFragment"
-            app:destination="@id/dashboardFragment" />
-        <action
-            android:id="@+id/action_compostingDetails_to_addCompost"
-            app:destination="@id/addCompost" />
+            android:id="@+id/action_dashboardFragment_to_compostingDetails2"
+            app:destination="@id/CompostingDetails" />
     </fragment>
     <fragment
         android:id="@+id/addCompost"
@@ -68,4 +56,15 @@
         android:name="com.example.composting.gameScreens.GameMainScreen"
         android:label="game_main_screen_fragment"
         tools:layout="@layout/game_main_screen_fragment" />
+    <fragment
+        android:id="@+id/CompostingDetails"
+        android:name="com.example.composting.detailScreens.CompostingDetails"
+        android:label="CompostingDetails" >
+        <action
+            android:id="@+id/action_compostingDetails2_to_addCompost"
+            app:destination="@id/addCompost" />
+        <action
+            android:id="@+id/action_compostingDetails2_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+    </fragment>
 </navigation>

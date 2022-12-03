@@ -51,7 +51,7 @@
                             android:layout_height="match_parent">
 
                             <TextView
-                                android:id="@+id/gameCoinAmountText"
+                                android:id="@+id/detailsTitleText"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
@@ -209,7 +209,7 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="125dp"
+            android:layout_height="115dp"
             android:background="@color/secondary_dark">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -262,7 +262,7 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="125dp"
+            android:layout_height="115dp"
             android:background="@color/secondary_dark">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -315,7 +315,7 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="125dp"
+            android:layout_height="115dp"
             android:background="@color/secondary_dark">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -369,7 +369,7 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="125dp"
+            android:layout_height="115dp"
             android:background="@color/secondary_dark">
 
             <androidx.constraintlayout.widget.ConstraintLayout

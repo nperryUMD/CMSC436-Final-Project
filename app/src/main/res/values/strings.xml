@@ -29,4 +29,9 @@
     <string name="upgrade_trophies">Upgrade Trophies!</string>
     <string name="_10_trophies_1_1_on_all_new_trophies">10 Trophies = 1.1 on all new Trophies</string>
     <string name="bin_upgrade">Bin Upgrade!</string>
+    <string name="health"><u>Health</u></string>
+    <string name="turn"><u>Turn</u></string>
+    <string name="totals"><u>Total</u></string>
+    <string name="add_more_items">Add more items</string>
+    <string name="turned_compost">Turned compost</string>
 </resources>
