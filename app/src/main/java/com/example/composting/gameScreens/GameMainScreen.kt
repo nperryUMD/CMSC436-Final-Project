@@ -6,9 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.navigation.findNavController
-import com.example.composting.R
-import com.example.composting.databinding.CompostingDetailsFragmentBinding
+import com.example.composting.MainActivity
 import com.example.composting.databinding.GameMainScreenFragmentBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -17,18 +15,21 @@ class GameMainScreen : Fragment() {
 
     private lateinit var binding: GameMainScreenFragmentBinding
     private lateinit var  database : DatabaseReference
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onResume() {
+        super.onResume()
+        var actionBar = (activity as MainActivity?)!!.supportActionBar
+        actionBar?.title = "Buy something"
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         binding = GameMainScreenFragmentBinding.inflate(inflater, container, false)
         val userid = FirebaseAuth.getInstance().currentUser!!.uid
         database = FirebaseDatabase.getInstance().getReference().child("Users").child(userid)
+
         binding.btnBuyTrophies.setOnClickListener {
 
             database?.addListenerForSingleValueEvent(object : ValueEventListener {

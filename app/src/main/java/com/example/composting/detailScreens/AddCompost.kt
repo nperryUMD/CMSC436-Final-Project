@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.composting.MainActivity
 import com.example.composting.databinding.AddCompostFragmentBinding
 import com.example.composting.detailScreens.classes.CompostItems
 import com.example.composting.detailScreens.classes.Datasource
@@ -20,8 +21,10 @@ class AddCompost : Fragment() {
     private lateinit var binding: AddCompostFragmentBinding
     private lateinit var recyclerView: RecyclerView
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onResume() {
+        super.onResume()
+        var actionBar = (activity as MainActivity?)!!.supportActionBar
+        actionBar?.title = "Add to your compost bin"
     }
 
     override fun onCreateView(
