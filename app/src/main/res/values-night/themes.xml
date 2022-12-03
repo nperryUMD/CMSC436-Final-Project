@@ -2,14 +2,15 @@
     <!-- Base application theme. -->
     <style name="Theme.App" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/md_theme_dark_primary</item>
-        <item name="colorPrimaryVariant">@color/md_theme_dark_primaryContainer</item>
-        <item name="colorOnPrimary">@color/md_theme_dark_onPrimary</item>
+        <item name="colorPrimary">@color/DARK_primary</item>
+        <item name="colorPrimaryVariant">@color/DARK_primary_dark</item>
+        <item name="colorOnPrimary">@color/DARK_primary_text</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/md_theme_dark_tertiary</item>
-        <item name="colorSecondaryVariant">@color/md_theme_dark_secondaryContainer</item>
-        <item name="colorOnSecondary">@color/md_theme_dark_onSecondary</item>
-        <item name="colorAccent">@color/md_theme_dark_tertiary</item>
+        <item name="colorSecondary">@color/DARK_secondary</item>
+        <item name="colorSecondaryVariant">@color/DARK_secondary_dark</item>
+        <item name="colorOnSecondary">@color/DARK_secondary_text</item>
+        <item name="colorAccent">@color/DARK_secondary_light</item>
+
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <item name="android:selectableItemBackground" tools:targetApi="l">@drawable/background_selector</item>

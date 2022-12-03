@@ -19,7 +19,6 @@
     <string name="live_animals_string_tabs">Live Animals</string>
     <string name="how_s_your_compost_bin_today">How\'s your compost bin today?</string>
     <string name="compost_added">has been added to your compost bin!</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="progress_towards_your_next_milestone">Progress towards your next milestone</string>
+    <string name="explore_more">Explore more...</string>
 </resources>
