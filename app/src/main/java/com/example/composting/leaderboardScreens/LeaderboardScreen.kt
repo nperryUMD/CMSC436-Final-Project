@@ -2,16 +2,17 @@ package com.example.composting.leaderboardScreens
 
 import LeaderboardAdapter
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.composting.MainActivity
 import com.example.composting.databinding.LeaderboardFragmentBinding
-import com.example.composting.detailScreens.classes.CompostItems
-import com.example.composting.detailScreens.classes.Datasource
 
 class LeaderboardScreen : Fragment() {
 
@@ -20,24 +21,27 @@ class LeaderboardScreen : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        var actionBar = (activity as MainActivity?)!!.supportActionBar
+        val actionBar = (activity as MainActivity?)!!.supportActionBar
         actionBar?.title = "Leaderboard"
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = LeaderboardFragmentBinding.inflate(inflater, container, false)
 
-        val data : ArrayList<CompostItems> = Datasource().load()
-        val adapter = LeaderboardAdapter(this.requireContext(), data)
+        val data: MutableLiveData<ArrayList<Person>> = Datasource().load()
+        data.observe(viewLifecycleOwner, Observer<ArrayList<Person>> {
+            val adapter = LeaderboardAdapter(this.requireContext(), data)
 
-        recyclerView = binding.leaderboardRecyclerView
-        recyclerView.layoutManager = LinearLayoutManager(this.requireContext())
-        recyclerView.adapter = adapter
-        recyclerView.setHasFixedSize(true)
+            recyclerView = binding.leaderboardRecyclerView
+            recyclerView.layoutManager = LinearLayoutManager(this.requireContext())
+            recyclerView.adapter = adapter
+        })
+
+
 
         // Return the root view.
         return binding.root
