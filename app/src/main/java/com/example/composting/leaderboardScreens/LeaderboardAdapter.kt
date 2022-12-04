@@ -1,53 +1,31 @@
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.composting.R
-import com.example.composting.detailScreens.classes.CompostItems
-import com.google.android.material.card.MaterialCardView
-import com.google.firebase.database.*
-import java.util.*
+import com.example.composting.leaderboardScreens.Person
 import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
-import android.util.Log
 
-class LeaderboardAdapter(context: Context, list: ArrayList<CompostItems>) :
+class LeaderboardAdapter(context: Context, list: MutableLiveData<ArrayList<Person>>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val context: Context = context
-    var list: ArrayList<CompostItems> = list
-    private lateinit var  database : DatabaseReference
+    var list: MutableLiveData<ArrayList<Person>> = list
+
 
     private inner class PersonViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
         var text: TextView = itemView.findViewById(R.id.leftCompostItemText)
         var score: TextView = itemView.findViewById(R.id.rightCompostItemText)
-        var box: MaterialCardView = itemView.findViewById(R.id.masterCompostItem)
         fun bind(position: Int) {
-            val recyclerViewModel = list[position] as CompostItems
-            text.text =  (position + 1).toString() + ". " + recyclerViewModel.name
-            score.text = recyclerViewModel.health.toString()
-
-            database = FirebaseDatabase.getInstance().getReference().child("Users")
-            val coinRanking:HashMap<Int, String> = HashMap()
-            database?.addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    for (dataSnapshot1 in dataSnapshot.children) {
-                        var key = dataSnapshot1.child("coins").getValue().toString().toInt()
-                        var value = dataSnapshot1.child("email").getValue().toString()
-                        coinRanking.put(key, value)
-                    }
-                    //map using coin as key and email as value in ascending order
-                    val rankedUsers: TreeMap<Int, String> = TreeMap(coinRanking)
-                }
-
-                override fun onCancelled(databaseError: DatabaseError) {
-                }
-
-            })
-
+            val recyclerViewModel = list.value?.get(position)
+            text.text =   "${position + 1}. ${recyclerViewModel?.email}"
+            score.text = recyclerViewModel?.score.toString()
+            text.textSize = 18.0F
         }
     }
 
@@ -59,11 +37,7 @@ class LeaderboardAdapter(context: Context, list: ArrayList<CompostItems>) :
     }
 
     override fun getItemCount(): Int {
-        return list.size
-    }
-
-    override fun getItemViewType(position: Int): Int {
-        return list[position].category
+        return list.value!!.size
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
