@@ -135,7 +135,7 @@ class GameMainScreen : Fragment() {
                         binding.gameTrophyAmountText.text = (currTrophies-10).toString()
                         Toast.makeText(
                             context,
-                            "Congrats your coin has been upgraded!",
+                            "Congrats your trophy has been upgraded!",
                             Toast.LENGTH_LONG
                         ).show()
                     } else {

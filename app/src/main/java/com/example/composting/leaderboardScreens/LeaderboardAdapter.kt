@@ -41,7 +41,6 @@ class LeaderboardAdapter(context: Context, list: ArrayList<CompostItems>) :
                     }
                     //map using coin as key and email as value in ascending order
                     val rankedUsers: TreeMap<Int, String> = TreeMap(coinRanking)
-
                 }
 
                 override fun onCancelled(databaseError: DatabaseError) {

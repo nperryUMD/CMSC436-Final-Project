@@ -39,6 +39,7 @@ class AddCompostAdapter(context: Context, list: ArrayList<CompostItems>, selecti
                 database?.addListenerForSingleValueEvent(object : ValueEventListener {
 
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
+
                         var healthVal =
                             dataSnapshot.child("compostHealth").getValue(Int::class.java)
                         var numOfEntries =
@@ -74,7 +75,17 @@ class AddCompostAdapter(context: Context, list: ArrayList<CompostItems>, selecti
                             database.child("milestoneProgress").setValue(0)
                             database.child("trophies").setValue(trophies + (1*trophyMultiplier))
 
-
+                        }
+                        //update nitrogen, carbon and live totals
+                        val currNitrogenVal = dataSnapshot.child("nitrogenTotal").getValue().toString().toInt()
+                        val currCarbonVal = dataSnapshot.child("carbonTotal").getValue().toString().toInt()
+                        val currLiveVal = dataSnapshot.child("liveTotal").getValue().toString().toInt()
+                        if(health.text.toString().toInt() >0 ){
+                            database.child("nitrogenTotal").setValue(currNitrogenVal+1)
+                        }else if(health.text.toString().toInt()<0){
+                            database.child("carbonTotal").setValue(currCarbonVal+1)
+                        }else if (health.text.toString().toInt() == 0){
+                            database.child("liveTotal").setValue(currLiveVal+1)
                         }
                     }
 
