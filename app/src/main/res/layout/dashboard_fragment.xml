@@ -18,7 +18,7 @@
             android:id="@+id/logout"
             android:layout_width="180dp"
             android:layout_height="match_parent"
-            android:layout_marginRight="15dp"
+            android:layout_marginEnd="15dp"
             android:text="@string/logout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -28,8 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/logout"
-            app:layout_constraintHorizontal_bias="0.069"
+            app:layout_constraintEnd_toStartOf="@+id/trophyUpperText"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.509" />
@@ -40,9 +39,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/logout"
-            app:layout_constraintHorizontal_bias="0.572"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/coinUpperText"
             app:layout_constraintVertical_bias="0.509" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
