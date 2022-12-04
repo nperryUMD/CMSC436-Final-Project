@@ -283,6 +283,7 @@
                     app:layout_constraintVertical_bias="0.219" />
 
                 <TextView
+                    android:id="@+id/gameCoinUpgradeText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/_50_coins_1_1_on_all_new_coins"
@@ -338,6 +339,7 @@
                     app:layout_constraintVertical_bias="0.304" />
 
                 <TextView
+                    android:id="@+id/gameTrophyUpgradeText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/_10_trophies_1_1_on_all_new_trophies"

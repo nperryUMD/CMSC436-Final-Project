@@ -2,21 +2,27 @@ package com.example.composting.detailScreens
 
 import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.composting.R
 import com.example.composting.databinding.CompostingDetailsFragmentBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit.DAYS
+import android.util.Log
+import com.google.firebase.database.ktx.getValue
+
 
 class CompostingDetails : Fragment() {
     private lateinit var  database : DatabaseReference
     private lateinit var binding: CompostingDetailsFragmentBinding
+    var currDate = LocalDate.now()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,20 +37,38 @@ class CompostingDetails : Fragment() {
         database = FirebaseDatabase.getInstance().getReference().child("Users").child(userid)
         // Inflate the layout for this fragment
         binding = CompostingDetailsFragmentBinding.inflate(inflater, container, false)
+        database?.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                var numOfDays = dataSnapshot.child("turnDays").getValue().toString().toInt()
+                binding.turnDaysText.text = "Turn in $numOfDays days"
+                binding.turnDetailsDaysText.text = "You should turn your compost in $numOfDays days"
+            }
+            override fun onCancelled(databaseError: DatabaseError) {
+            }
+        })
         binding.btnTurnCompost.setOnClickListener{
-            // Turn the compost
-            Toast.makeText(
-                context,
-                "Compost has been turned!",
-                Toast.LENGTH_LONG
-            ).show()
+            database?.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    database.child("turnDate").setValue(currDate.toString())
+                    database.child("turnDays").setValue(7)
+                    binding.turnDaysText.text = "Turn in 7 days"
+                    binding.turnDetailsDaysText.text =
+                        "You should turn your compost in 7 days"
+                    Toast.makeText(
+                        context,
+                        "Compost has been turned!",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+                override fun onCancelled(databaseError: DatabaseError) {
+                }
+            })
 
-            // update the database
         }
+
         binding.btnAddItems.setOnClickListener { container!!.findNavController().navigate(R.id.action_compostingDetails2_to_addCompost) }
 
-
-        database?.addValueEventListener(object : ValueEventListener {
+        database?.addListenerForSingleValueEvent(object : ValueEventListener {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // HEALTH CARD UPDATES
@@ -64,20 +88,34 @@ class CompostingDetails : Fragment() {
                 }
 
                 // TURN CARD UPDATES
-                val turnInt: Int = dataSnapshot.child("turnDays").getValue().toString().toInt()
-                if (turnInt == 0){
-                    binding.turnDaysText.text = "Turn today"
-                    binding.turnDetailsDaysText.text = "You should turn your compost today"
-                }else{
-                    binding.turnDetailsDaysText.text = "Turn in $turnInt days"
-                    binding.turnDetailsDaysText.text = "You should turn your compost in $turnInt days"
+                    val format: DateTimeFormatter = DateTimeFormatter.ofPattern( "yyyy-MM-d")
+                     var turned =dataSnapshot.child("turnDate").getValue().toString()
+
+                    val currDay: LocalDate = LocalDate.parse(currDate.toString(), format)
+                     val turnedDate: LocalDate = LocalDate.parse(turned, format)
+                    val dayNextTurn = 7 - (DAYS.between(turnedDate,currDay ).toInt())
+                    val turnInt: Int = dayNextTurn.toInt()
+                     database.child("turnDays").setValue(dayNextTurn)
+                    if(dayNextTurn.toInt() == 0 && dataSnapshot.child("turnDays").getValue().toString().toInt() == 7){
+                        database.child("turnDays").setValue(dayNextTurn)
+                        val turnInt: Int = dataSnapshot.child("turnDays").getValue().toString().toInt()
+                    }
+
+                    if (turnInt == 0 ) {
+                        binding.turnDaysText.text = "Turn today"
+                        binding.turnDetailsDaysText.text = "You should turn your compost today"
+                    } else {
+                        binding.turnDaysText.text = "Turn in $turnInt days"
+                        binding.turnDetailsDaysText.text =
+                            "You should turn your compost in $turnInt days"
+                        database.child("turnDays").setValue(dayNextTurn)
                 }
 
                 // TOTAL CARD UPDATES
                 val totalInt: Int = dataSnapshot.child("totalCompostEntries").getValue().toString().toInt()
-                val carbonInt: Int = 0 // dataSnapshot.child("totalCompostEntries").getValue().toString().toInt()
-                val nitrogenInt: Int = 0 // dataSnapshot.child("totalCompostEntries").getValue().toString().toInt()
-                val liveInt: Int = 0 // dataSnapshot.child("totalCompostEntries").getValue().toString().toInt()
+                val carbonInt: Int =  dataSnapshot.child("carbonTotal").getValue().toString().toInt()
+                val nitrogenInt: Int =  dataSnapshot.child("nitrogenTotal").getValue().toString().toInt()
+                val liveInt: Int =  dataSnapshot.child("liveTotal").getValue().toString().toInt()
 
                 binding.totalStatsText.text = "$totalInt Items"
                 binding.detailsStatsText.text = "You have $carbonInt carbon rich, $nitrogenInt nitrogen rich, $liveInt live animals"
@@ -87,6 +125,7 @@ class CompostingDetails : Fragment() {
             }
 
         })
+
 
         // Return the root view.
         return binding.root

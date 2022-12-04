@@ -1,5 +1,6 @@
 package com.example.composting.mainScroll
 
+
 abstract class Data {
     abstract var viewType: Int
 }
@@ -25,8 +26,10 @@ data class GameCard (
 
 data class UserCard (
     override var viewType: Int,
+    var email:String,
     var totalCompostEntries: Int,
     var turnDays: Int,
+    var turnDate: String,
     var compostHealth: Int,
     var coins: Int,
     var trophies: Int,
@@ -34,6 +37,7 @@ data class UserCard (
     var milestoneProgress: Int,
     var coinMultiplier: Double,
     var trophyMultiplier: Double,
+    var milestoneMultiplier:Double,
     var carbonTotal: Int,
     var nitrogenTotal:Int,
     var liveTotal:Int

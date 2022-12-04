@@ -16,11 +16,13 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.*
 import android.util.Log
+import java.time.LocalDate
 
 class RegistrationFragment : Fragment(){
     private var validator = Validators()
     private lateinit var auth: FirebaseAuth
     private lateinit var  database : DatabaseReference
+    internal lateinit var email: String
     /** Binding to XML layout */
     private lateinit var binding: RegistrationFragmentBinding
 
@@ -38,7 +40,7 @@ class RegistrationFragment : Fragment(){
     }
 
     private fun registerNewUser() {
-        val email: String = binding.email.text.toString()
+        email = binding.email.text.toString()
         val password: String = binding.password.text.toString()
 
         if (!validator.validEmail(email)) {
@@ -89,8 +91,9 @@ class RegistrationFragment : Fragment(){
         val user = FirebaseAuth.getInstance().currentUser
         val userid = user!!.uid
         database = FirebaseDatabase.getInstance().getReference("Users")
-        database.child(userid).setValue(UserCard(0,0,0,0,0,0,
-       0,0,0.0,0.0,0,0,0) )
+        var currDate = LocalDate.now().toString()
+        database.child(userid).setValue(UserCard(0,email,0,0,currDate,0,
+       0,0,0,0,1.0,1.0,1.0,0,0,0) )
 
     }
 

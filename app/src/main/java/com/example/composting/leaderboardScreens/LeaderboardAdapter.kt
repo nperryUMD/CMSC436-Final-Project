@@ -3,14 +3,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.composting.R
 import com.example.composting.detailScreens.classes.CompostItems
 import com.google.android.material.card.MaterialCardView
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
+import android.util.Log
 
 class LeaderboardAdapter(context: Context, list: ArrayList<CompostItems>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -28,6 +29,26 @@ class LeaderboardAdapter(context: Context, list: ArrayList<CompostItems>) :
             val recyclerViewModel = list[position] as CompostItems
             text.text =  (position + 1).toString() + ". " + recyclerViewModel.name
             score.text = recyclerViewModel.health.toString()
+
+            database = FirebaseDatabase.getInstance().getReference().child("Users")
+            val coinRanking:HashMap<Int, String> = HashMap()
+            database?.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    for (dataSnapshot1 in dataSnapshot.children) {
+                        var key = dataSnapshot1.child("coins").getValue().toString().toInt()
+                        var value = dataSnapshot1.child("email").getValue().toString()
+                        coinRanking.put(key, value)
+                    }
+                    //map using coin as key and email as value in ascending order
+                    val rankedUsers: TreeMap<Int, String> = TreeMap(coinRanking)
+
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+                }
+
+            })
+
         }
     }
 

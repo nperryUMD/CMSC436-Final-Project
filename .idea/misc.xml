@@ -4,9 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/add_compost_fragment.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/compost_bin.xml" value="0.1" />
         <entry key="app/src/main/res/layout/compost_items_fragment.xml" value="0.1" />
         <entry key="app/src/main/res/layout/composting_details_fragment.xml" value="0.1" />
         <entry key="app/src/main/res/layout/dashboard_fragment.xml" value="0.11593342078613778" />
+        <entry key="app/src/main/res/layout/game_bin.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/game_main_screen_fragment.xml" value="0.5406982421875001" />
+        <entry key="app/src/main/res/layout/leaderboard_fragment.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/login_fragment.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/main_fragment.xml" value="0.1" />
       </map>
     </option>
   </component>

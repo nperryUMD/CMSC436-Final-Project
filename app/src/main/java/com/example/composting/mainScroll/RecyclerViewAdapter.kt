@@ -49,7 +49,7 @@ class RecyclerViewAdapter(context: Context, list: ArrayList<Data>) :
 
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
                         total.text = "Composted\n" + dataSnapshot.child("totalCompostEntries").getValue().toString()
-                        turn.text = "Turn in\n"  + dataSnapshot.child("turnDays").getValue().toString()
+                        turn.text = "Turn in\n"  + dataSnapshot.child("turnDays").getValue().toString() + " days"
                         health.text = "Health\n" +  dataSnapshot.child("compostHealth").getValue().toString()
 
                     }

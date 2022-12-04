@@ -39,39 +39,44 @@ class AddCompostAdapter(context: Context, list: ArrayList<CompostItems>, selecti
                 database?.addListenerForSingleValueEvent(object : ValueEventListener {
 
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
-                        var healthVal = dataSnapshot.child("compostHealth").getValue(Int::class.java)
-                        var numOfEntries = dataSnapshot.child("totalCompostEntries").getValue(Int::class.java)
+                        var healthVal =
+                            dataSnapshot.child("compostHealth").getValue(Int::class.java)
+                        var numOfEntries =
+                            dataSnapshot.child("totalCompostEntries").getValue(Int::class.java)
                         var coins = dataSnapshot.child("coins").getValue().toString().toInt()
                         var trophies = dataSnapshot.child("trophies").getValue().toString().toInt()
-                        var currMilestones = dataSnapshot.child("milestones").getValue().toString().toInt()
-                        var currMilestoneProgress = dataSnapshot.child("milestoneProgress").getValue().toString().toInt()
-                        var currTrophies = dataSnapshot.child("trophies").getValue().toString().toInt()
+                        var trophyMultiplier =
+                            dataSnapshot.child("trophyMultiplier").getValue().toString().toDouble()
+                        var coinMultiplier =
+                            dataSnapshot.child("coinMultiplier").getValue().toString().toDouble()
+                        var currMilestones =
+                            dataSnapshot.child("milestones").getValue().toString().toInt()
+                        var currMilestoneProgress =
+                            dataSnapshot.child("milestoneProgress").getValue().toString().toInt()
+                        var currTrophies =
+                            dataSnapshot.child("trophies").getValue().toString().toInt()
 
                         //update information when items added
-                        database.child("compostHealth").setValue(healthVal.toString().toInt() + health.text.toString().toInt())
-                        database.child("totalCompostEntries").setValue(numOfEntries.toString().toInt()+1)
-                        database.child("milestoneProgress").setValue(currMilestoneProgress+10)
+                        database.child("compostHealth")
+                            .setValue(healthVal.toString().toInt() + health.text.toString().toInt())
+                        database.child("totalCompostEntries")
+                            .setValue(numOfEntries.toString().toInt() + 1)
+                        database.child("milestoneProgress").setValue(currMilestoneProgress + 10)
 
                         //update coin values
-                           if (dataSnapshot.child("coinMultiplier").getValue().toString().toDouble() == 1.1) {
-                                database.child("coins").setValue(coins + (1.1 * 10))
-                            } else {
+                        database.child("coins").setValue(coins + (10 * coinMultiplier))
 
-                               database.child("coins").setValue(coins + 10)
-                           }
                         //update trophy values and milestone when reach milestone
-                            if(dataSnapshot.child("milestoneProgress").getValue().toString().toInt() >=100){
-                                database.child("milestones").setValue(currMilestones+1)
-                                database.child("milestoneProgress").setValue(0)
+                        if (dataSnapshot.child("milestoneProgress").getValue().toString()
+                                .toInt() >= 100
+                        ) {
+                            database.child("milestones").setValue(currMilestones + 1)
+                            database.child("milestoneProgress").setValue(0)
+                            database.child("trophies").setValue(trophies + (1*trophyMultiplier))
 
-                                if(dataSnapshot.child("trophyMultiplier").getValue().toString().toDouble() == 1.1){
-                                    database.child("trophies").setValue(trophies+ (1.1*1))
-                                }
-                                else{
-                                    database.child("trophies").setValue(trophies+1)
-                                }
-                            }
+
                         }
+                    }
 
                     override fun onCancelled(databaseError: DatabaseError) {
                     }
