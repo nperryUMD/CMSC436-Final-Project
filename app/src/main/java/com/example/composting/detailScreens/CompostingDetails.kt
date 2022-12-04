@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import com.example.composting.MainActivity
 import com.example.composting.R
 import com.example.composting.databinding.CompostingDetailsFragmentBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -25,8 +26,10 @@ class CompostingDetails : Fragment() {
     var currDate = LocalDate.now()
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onResume() {
+        super.onResume()
+        var actionBar = (activity as MainActivity?)!!.supportActionBar
+        actionBar?.title = "Your bin"
     }
 
     override fun onCreateView(

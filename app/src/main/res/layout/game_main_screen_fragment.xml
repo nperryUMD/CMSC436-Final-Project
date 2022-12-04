@@ -43,7 +43,7 @@
                                 android:id="@+id/gameCoinImage"
                                 android:layout_width="100dp"
                                 android:layout_height="100dp"
-                                android:src="@android:drawable/btn_star" />
+                                android:src="@drawable/coins" />
                         </TableRow>
 
                         <TableRow
@@ -105,7 +105,7 @@
                                 android:id="@+id/gameTrophyImage"
                                 android:layout_width="100dp"
                                 android:layout_height="100dp"
-                                android:src="@android:drawable/btn_star_big_on" />
+                                android:src="@drawable/troph" />
                         </TableRow>
 
                         <TableRow
@@ -167,7 +167,7 @@
                                 android:id="@+id/gameMilestoneImage"
                                 android:layout_width="100dp"
                                 android:layout_height="100dp"
-                                android:src="@android:drawable/star_on" />
+                                android:src="@drawable/milestone" />
                         </TableRow>
 
                         <TableRow

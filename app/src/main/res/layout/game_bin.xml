@@ -26,7 +26,7 @@
             tools:visibility="visible">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="183dp"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
@@ -36,13 +36,13 @@
 
                     <ImageView
                         android:id="@+id/imageView5"
-                        android:layout_width="142dp"
-                        android:layout_height="73dp"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
-                        android:layout_marginStart="22dp"
+                        android:layout_marginStart="38dp"
                         android:layout_marginTop="16dp"
-                        app:srcCompat="@drawable/coin" />
+                        app:srcCompat="@drawable/coins" />
 
                     <TextView
                         android:id="@+id/coinCountText"
@@ -72,13 +72,15 @@
 
                     <ImageView
                         android:id="@+id/imageView6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="73dp"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
-                        android:layout_marginStart="-6dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="34dp"
                         android:layout_marginTop="16dp"
-                        app:srcCompat="@drawable/trophy" />
+                        android:layout_marginEnd="30dp"
+                        app:srcCompat="@drawable/troph" />
 
                     <TextView
                         android:id="@+id/trophyCountText"
@@ -137,7 +139,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="/20"
+                    android:text="/100"
                     android:textAlignment="textEnd"
                     android:textColor="@color/secondary_text"
                     android:textSize="20sp" />

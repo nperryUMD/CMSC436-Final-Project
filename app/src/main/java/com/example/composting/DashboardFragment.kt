@@ -22,6 +22,12 @@ class DashboardFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var database: DatabaseReference
+    override fun onResume() {
+        super.onResume()
+        var actionBar = (activity as MainActivity?)!!.supportActionBar
+        actionBar?.setDisplayHomeAsUpEnabled(false)
+        actionBar?.title = "Compost Bin"
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

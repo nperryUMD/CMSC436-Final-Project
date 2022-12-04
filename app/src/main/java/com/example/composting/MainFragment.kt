@@ -9,6 +9,11 @@ import androidx.navigation.fragment.findNavController
 import com.example.composting.databinding.MainFragmentBinding
 
 class MainFragment : Fragment() {
+    override fun onResume() {
+        super.onResume()
+        var actionBar = (activity as MainActivity?)!!.supportActionBar
+        actionBar?.title = "Compost App"
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
