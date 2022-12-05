@@ -1,5 +1,6 @@
 package com.example.composting.login
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.composting.R
 import com.example.composting.databinding.LoginFragmentBinding
+import com.google.android.material.internal.ViewUtils.hideKeyboard
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 
@@ -29,16 +31,19 @@ class LoginFragment : Fragment(){
         return binding.root
     }
 
+    @SuppressLint("RestrictedApi")
     private fun loginUserAccount() {
         val email: String = binding.email.text.toString()
         val password: String = binding.password.text.toString()
 
         if (TextUtils.isEmpty(email)) {
+            hideKeyboard(requireView())
             Snackbar.make(requireView(),
                 getString(R.string.login_toast),Snackbar.LENGTH_SHORT).show()
             return
         }
         if (TextUtils.isEmpty(password)) {
+            hideKeyboard(requireView())
             Snackbar.make(requireView(),
                 getString(R.string.password_toast),Snackbar.LENGTH_SHORT).show()
 
@@ -59,6 +64,7 @@ class LoginFragment : Fragment(){
                         R.id.action_loginFragment_to_dashboardFragment
                     )
                 } else {
+                    hideKeyboard(requireView())
                     Snackbar.make(requireView(),
                         getString(R.string.Login_failed_Please_try_again_later),Snackbar.LENGTH_SHORT).show()
                 }

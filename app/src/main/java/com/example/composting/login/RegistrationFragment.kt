@@ -1,5 +1,6 @@
 package com.example.composting.login
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.composting.R
 import com.example.composting.databinding.RegistrationFragmentBinding
 import com.example.composting.mainScroll.UserCard
+import com.google.android.material.internal.ViewUtils
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -37,11 +39,13 @@ class RegistrationFragment : Fragment(){
         return binding.root
     }
 
+    @SuppressLint("RestrictedApi")
     private fun registerNewUser() {
         email = binding.email.text.toString()
         val password: String = binding.password.text.toString()
 
         if (!validator.validEmail(email)) {
+            ViewUtils.hideKeyboard(requireView())
             Snackbar.make(requireView(),
                 getString(R.string.invalid_email), Snackbar.LENGTH_SHORT).show()
 
@@ -49,6 +53,7 @@ class RegistrationFragment : Fragment(){
         }
 
         if (!validator.validPassword(password)) {
+            ViewUtils.hideKeyboard(requireView())
             Snackbar.make(requireView(),
                 getString(R.string.invalid_password),Snackbar.LENGTH_SHORT).show()
             return
@@ -68,6 +73,7 @@ class RegistrationFragment : Fragment(){
                         R.id.action_registrationFragment_to_dashboardFragment
                     )
                 } else {
+                    ViewUtils.hideKeyboard(requireView())
                     Snackbar.make(requireView(),
                         getString(R.string.register_failed_string),Snackbar.LENGTH_SHORT).show()
                 }
