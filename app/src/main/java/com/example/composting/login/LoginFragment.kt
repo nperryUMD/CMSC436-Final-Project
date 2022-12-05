@@ -52,7 +52,7 @@ class LoginFragment : Fragment(){
                 binding.progressBar.visibility = View.GONE
                 if (task.isSuccessful) {
                     Snackbar.make(requireView(),
-                        "Login successful!",Snackbar.LENGTH_SHORT).show()
+                        getString(R.string.Login_successful),Snackbar.LENGTH_SHORT).show()
 
 
                     findNavController().navigate(
@@ -60,7 +60,7 @@ class LoginFragment : Fragment(){
                     )
                 } else {
                     Snackbar.make(requireView(),
-                        "Login failed! Please try again later!",Snackbar.LENGTH_SHORT).show()
+                        getString(R.string.Login_failed_Please_try_again_later),Snackbar.LENGTH_SHORT).show()
                 }
             }
     }

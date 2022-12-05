@@ -73,17 +73,17 @@ class CompostingDetails : Fragment() {
                 // HEALTH CARD UPDATES
                 val healthInt: Int = dataSnapshot.child("compostHealth").getValue().toString().toInt()
                 if (healthInt > 15){
-                    binding.healthText.text = "Bad"
+                    binding.healthText.text = getString(R.string.Bad)
                     binding.healthText.setBackgroundColor(Color.parseColor("#f0554a"))
-                    binding.substanceSuggestionText.text = "Your compost health is carbon-rich"
+                    binding.substanceSuggestionText.text = getString(R.string.Your_compost_health_is_carbon_rich)
                 }else if (healthInt < -15){
                     binding.healthText.text = "Bad"
                     binding.healthText.setBackgroundColor(Color.parseColor("#f0554a"))
-                    binding.substanceSuggestionText.text = "Your compost health is nitrogen-rich"
+                    binding.substanceSuggestionText.text = getString(R.string.Your_compost_health_is_nitrogen_rich)
                 }else{
                     binding.healthText.text = "Great"
                     binding.healthText.setBackgroundColor(Color.parseColor("#50f04a"))
-                    binding.substanceSuggestionText.text = "Your compost health is well balanced"
+                    binding.substanceSuggestionText.text = getString(R.string.Your_compost_health_is_well_balanced)
                 }
 
                 // TURN CARD UPDATES
@@ -101,8 +101,8 @@ class CompostingDetails : Fragment() {
                     }
 
                     if (turnInt == 0 ) {
-                        binding.turnDaysText.text = "Turn today"
-                        binding.turnDetailsDaysText.text = "You should turn your compost today"
+                        binding.turnDaysText.text = getString(R.string.Turn_today)
+                        binding.turnDetailsDaysText.text = getString(R.string.You_should_turn_your_compost_today)
                     } else {
                         binding.turnDaysText.text = "Turn in $turnInt days"
                         binding.turnDetailsDaysText.text =

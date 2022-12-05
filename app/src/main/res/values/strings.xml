@@ -53,4 +53,6 @@
     <string name="Your_bin">Your bin</string>
     <string name="Bad">Bad</string>
     <string name="Great">Great</string>
+    <string name="Login_successful">Login successful!</string>
+    <string name="Login_failed_Please_try_again_later">Login failed! Please try again later!</string>
 </resources>
