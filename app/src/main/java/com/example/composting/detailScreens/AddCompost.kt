@@ -2,7 +2,6 @@ package com.example.composting.detailScreens
 
 import AddCompostAdapter
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.composting.MainActivity
-import com.example.composting.R
 import com.example.composting.databinding.AddCompostFragmentBinding
 import com.example.composting.detailScreens.classes.CompostItems
 import com.example.composting.detailScreens.classes.Datasource

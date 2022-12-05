@@ -1,6 +1,5 @@
 package com.example.composting.leaderboardScreens
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.database.*
 
@@ -16,7 +15,7 @@ class Datasource {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for (dataSnapshot1 in dataSnapshot.children) {
                     val email = dataSnapshot1.child("email").value.toString()
-                    val score = dataSnapshot1.child("coins").value.toString().toInt()
+                    val score = dataSnapshot1.child("milestones").value.toString().toInt()
                     list.add(Person(email, score))
                 }
                 val sortedList = ArrayList(list.sortedWith(compareByDescending { it.score }))

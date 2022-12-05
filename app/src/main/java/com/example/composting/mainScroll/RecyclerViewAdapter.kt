@@ -12,11 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.composting.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.google.firebase.database.ktx.getValue
 import com.jjoe64.graphview.GraphView
-import com.jjoe64.graphview.series.DataPoint
-import com.jjoe64.graphview.series.LineGraphSeries
-import android.util.Log
 
 lateinit var lineGraphView: GraphView
 

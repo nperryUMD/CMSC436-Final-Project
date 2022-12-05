@@ -1,18 +1,14 @@
 package com.example.composting.gameScreens
 
-import android.icu.text.DecimalFormat
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.example.composting.MainActivity
 import com.example.composting.databinding.GameMainScreenFragmentBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import java.math.RoundingMode
-import android.util.Log
 import com.example.composting.R
 import com.google.android.material.snackbar.Snackbar
 
@@ -97,7 +93,7 @@ class GameMainScreen : Fragment() {
                         database.child("coinMultiplier").setValue(newMultiplier)
                         database.child("coins").setValue(currCoins-50)
                         binding.gameCoinMultiplyText.text = (currCoinMultiplier.toBigDecimal()+.1.toBigDecimal()).toString() + "x"
-                        binding.gameCoinUpgradeText.text = "50 coins = " + nextMultiplier + "x on all new coins"
+                        binding.gameCoinUpgradeText.text = "50 Coins = " + nextMultiplier + "x on all new coins"
                         binding.detailsTitleText.text = (currCoins-50).toString()
 
                         Snackbar.make(requireView(),
@@ -129,7 +125,7 @@ class GameMainScreen : Fragment() {
                             getString(R.string.Congrats_your_trophy_has_been_upgraded), Snackbar.LENGTH_SHORT).show()
                     } else {
                         Snackbar.make(requireView(),
-                            getString(R.string.sorry_not_enough_coins), Snackbar.LENGTH_SHORT).show()
+                            getString(R.string.sorry_not_enough_trophies), Snackbar.LENGTH_SHORT).show()
                     }
                 }
                 override fun onCancelled(databaseError: DatabaseError) {
@@ -151,12 +147,13 @@ class GameMainScreen : Fragment() {
                         binding.gameMilestoneMultiplyText.text = (currMilestoneMultiplier.toBigDecimal()+.1.toBigDecimal()).toString() +"x"
                         binding.textView15.text =  "25 Trophies = " + nextMultiplier  + "x on all new milestones!"
                         binding.gameMilestoneAmountText.text = (currMilestone).toString()
+                        binding.gameTrophyAmountText.text = (currTrophies-25).toString()
 
                         Snackbar.make(requireView(),
                             getString(R.string.Congrats_your_upgrades), Snackbar.LENGTH_SHORT).show()
                     } else {
                         Snackbar.make(requireView(),
-                            getString(R.string.sorry_not_enough_coins), Snackbar.LENGTH_SHORT).show()
+                            getString(R.string.sorry_not_enough_trophies), Snackbar.LENGTH_SHORT).show()
                     }
                 }
                 override fun onCancelled(databaseError: DatabaseError) {

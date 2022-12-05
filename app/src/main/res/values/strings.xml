@@ -55,4 +55,5 @@
     <string name="Great">Great</string>
     <string name="Login_successful">Login successful!</string>
     <string name="Login_failed_Please_try_again_later">Login failed! Please try again later!</string>
+    <string name="sorry_not_enough_trophies">Sorry, you do not have enough trophies!</string>
 </resources>
