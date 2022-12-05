@@ -70,7 +70,7 @@ class AddCompostAdapter(context: Context, list: ArrayList<CompostItems>, selecti
                         ) {
                             database.child("milestones").setValue(currMilestones + 1)
                             database.child("milestoneProgress").setValue(0)
-                            database.child("trophies").setValue(trophies + (1*trophyMultiplier))
+                            database.child("trophies").setValue(trophies + (10*trophyMultiplier))
 
                         }
                         //update nitrogen, carbon and live totals

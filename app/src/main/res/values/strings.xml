@@ -45,4 +45,12 @@
     <string name="congrats_on_bin_upgrade">Congrats your coin has been upgraded!</string>
     <string name="Congrats_your_trophy_has_been_upgraded">Congrats your trophy has been upgraded!</string>
     <string name="Congrats_your_upgrades">Congrats on your milestone upgrade!</string>
+    <string name="Turn_today">"Turn today</string>
+    <string name="You_should_turn_your_compost_today">You should turn your compost today</string>
+    <string name="Your_compost_health_is_carbon_rich">Your compost health is carbon-rich</string>
+    <string name="Your_compost_health_is_nitrogen_rich">Your compost health is nitrogen-rich</string>
+    <string name="Your_compost_health_is_well_balanced">Your compost health is well balanced</string>
+    <string name="Your_bin">Your bin</string>
+    <string name="Bad">Bad</string>
+    <string name="Great">Great</string>
 </resources>
