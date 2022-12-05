@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,8 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.composting.databinding.DashboardFragmentBinding
 import com.example.composting.mainScroll.Data
 import com.example.composting.mainScroll.Datasource
-import com.example.composting.mainScroll.GameCard
 import com.example.composting.mainScroll.RecyclerViewAdapter
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
@@ -42,11 +41,8 @@ class DashboardFragment : Fragment() {
         binding.logout.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
 
-            Toast.makeText(
-                requireContext(),
-                "You are now logged out!",
-                Toast.LENGTH_SHORT
-            ).show()
+            Snackbar.make(requireView(),
+                getString(R.string.logged_out), Snackbar.LENGTH_SHORT).show()
 
             findNavController().popBackStack(R.id.mainFragment, false)
         }

@@ -13,6 +13,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import java.math.RoundingMode
 import android.util.Log
+import com.example.composting.R
+import com.google.android.material.snackbar.Snackbar
+
 class GameMainScreen : Fragment() {
 
     private lateinit var binding: GameMainScreenFragmentBinding
@@ -44,7 +47,7 @@ class GameMainScreen : Fragment() {
                 binding.gameCoinMultiplyText.text = dataSnapshot.child("coinMultiplier").getValue().toString() +"x"
                 binding.gameTrophyMultiplyText.text = dataSnapshot.child("trophyMultiplier").getValue().toString() +"x"
                 binding.gameMilestoneMultiplyText.text = dataSnapshot.child("milestoneMultiplier").getValue().toString() +"x"
-               binding.textView15.text = "25 Trophies = " + currNextMilestoneMultiplier +"x on all new items!"
+               binding.textView15.text = "25 Trophies = " + currNextMilestoneMultiplier +"x on all new milestones!"
                 binding.gameTrophyUpgradeText.text =  "10 Trophies = " + currNextTrophyMultiplier + "x on all new Trophies"
                binding.gameCoinUpgradeText.text = "50 coins = " + currNextCoinMultiplier + "x on all new coins"
                 binding.gameMilestoneAmountText.text = dataSnapshot.child("milestones").getValue().toString()
@@ -67,17 +70,12 @@ class GameMainScreen : Fragment() {
                         database.child("coins").setValue(currCoins-10)
                         binding.gameTrophyAmountText.text = (currTrophies+1).toString()
                         binding.detailsTitleText.text = (currCoins-10).toString()
-                        Toast.makeText(
-                            context,
-                            "Congrats your trophy has been added!",
-                            Toast.LENGTH_LONG
-                        ).show()
+
+                        Snackbar.make(requireView(),
+                            getString(R.string.trophy_has_been_added), Snackbar.LENGTH_SHORT).show()
                     } else {
-                        Toast.makeText(
-                            context,
-                            "Sorry, you do not have enough coins!",
-                            Toast.LENGTH_LONG
-                        ).show()
+                        Snackbar.make(requireView(),
+                            getString(R.string.sorry_not_enough_coins), Snackbar.LENGTH_SHORT).show()
                     }
                 }
 
@@ -102,17 +100,11 @@ class GameMainScreen : Fragment() {
                         binding.gameCoinUpgradeText.text = "50 coins = " + nextMultiplier + "x on all new coins"
                         binding.detailsTitleText.text = (currCoins-50).toString()
 
-                        Toast.makeText(
-                            context,
-                            "Congrats your coin has been upgraded!",
-                            Toast.LENGTH_LONG
-                        ).show()
+                        Snackbar.make(requireView(),
+                            getString(R.string.congrats_on_bin_upgrade), Snackbar.LENGTH_SHORT).show()
                     } else {
-                        Toast.makeText(
-                            context,
-                            "Sorry, you do not have enough coins!",
-                            Toast.LENGTH_LONG
-                        ).show()
+                        Snackbar.make(requireView(),
+                            getString(R.string.sorry_not_enough_coins), Snackbar.LENGTH_SHORT).show()
                     }
                 }
                 override fun onCancelled(databaseError: DatabaseError) {
@@ -133,17 +125,11 @@ class GameMainScreen : Fragment() {
                         binding.gameTrophyMultiplyText.text = (currTrophyMultiplier.toBigDecimal()+.1.toBigDecimal()).toString() +"x"
                         binding.gameTrophyUpgradeText.text =  "10 Trophies = " + nextMultiplier  + "x on all new Trophies"
                         binding.gameTrophyAmountText.text = (currTrophies-10).toString()
-                        Toast.makeText(
-                            context,
-                            "Congrats your trophy has been upgraded!",
-                            Toast.LENGTH_LONG
-                        ).show()
+                        Snackbar.make(requireView(),
+                            getString(R.string.Congrats_your_trophy_has_been_upgraded), Snackbar.LENGTH_SHORT).show()
                     } else {
-                        Toast.makeText(
-                            context,
-                            "Sorry, you do not have enough trophies!",
-                            Toast.LENGTH_LONG
-                        ).show()
+                        Snackbar.make(requireView(),
+                            getString(R.string.sorry_not_enough_coins), Snackbar.LENGTH_SHORT).show()
                     }
                 }
                 override fun onCancelled(databaseError: DatabaseError) {
@@ -163,19 +149,14 @@ class GameMainScreen : Fragment() {
                         database.child("milestoneMultiplier").setValue(newMultiplier)
                         database.child("trophies").setValue(currTrophies-25)
                         binding.gameMilestoneMultiplyText.text = (currMilestoneMultiplier.toBigDecimal()+.1.toBigDecimal()).toString() +"x"
-                        binding.textView15.text =  "25 Trophies = " + nextMultiplier  + "x on all new items!"
+                        binding.textView15.text =  "25 Trophies = " + nextMultiplier  + "x on all new milestones!"
                         binding.gameMilestoneAmountText.text = (currMilestone).toString()
-                        Toast.makeText(
-                            context,
-                            "Congrats your upgrades!",
-                            Toast.LENGTH_LONG
-                        ).show()
+
+                        Snackbar.make(requireView(),
+                            getString(R.string.Congrats_your_upgrades), Snackbar.LENGTH_SHORT).show()
                     } else {
-                        Toast.makeText(
-                            context,
-                            "Sorry, you do not have enough trophies!",
-                            Toast.LENGTH_LONG
-                        ).show()
+                        Snackbar.make(requireView(),
+                            getString(R.string.sorry_not_enough_coins), Snackbar.LENGTH_SHORT).show()
                     }
                 }
                 override fun onCancelled(databaseError: DatabaseError) {

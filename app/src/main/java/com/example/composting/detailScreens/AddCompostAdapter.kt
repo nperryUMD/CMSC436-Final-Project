@@ -3,16 +3,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.composting.R
 import com.example.composting.detailScreens.classes.CompostItems
 import com.google.android.material.card.MaterialCardView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import android.widget.ProgressBar
-import com.google.firebase.database.ktx.getValue
-
+import com.google.android.material.snackbar.Snackbar
 
 class AddCompostAdapter(context: Context, list: ArrayList<CompostItems>, selection: Int) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -94,12 +91,10 @@ class AddCompostAdapter(context: Context, list: ArrayList<CompostItems>, selecti
                 })
                 // Add health to compost
 
-                var toastString = recyclerViewModel.name + " " + context.getString(R.string.compost_added)
-                Toast.makeText(
-                    context,
-                    toastString,
-                    Toast.LENGTH_LONG
-                ).show()
+                var snackString = recyclerViewModel.name + " " + context.getString(R.string.compost_added)
+
+                Snackbar.make(box,
+                    snackString, Snackbar.LENGTH_SHORT).show()
             }
             text.text = recyclerViewModel.name
             health.text = recyclerViewModel.health.toString()

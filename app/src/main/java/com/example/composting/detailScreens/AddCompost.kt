@@ -10,11 +10,11 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.composting.MainActivity
+import com.example.composting.R
 import com.example.composting.databinding.AddCompostFragmentBinding
 import com.example.composting.detailScreens.classes.CompostItems
 import com.example.composting.detailScreens.classes.Datasource
 import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 
 class AddCompost : Fragment() {
 

@@ -38,4 +38,11 @@
     <string name="see_how_you_stack_up">See how you stack up!</string>
     <string name="leaderboard_pic">leaderboard pic</string>
     <string name="compost_bin_image">Compost bin image</string>
+    <string name="logged_out">You are now logged out!</string>
+    <string name="compost_has_been_turned">Compost has been turned!</string>
+    <string name="trophy_has_been_added">Congrats your trophy has been added!</string>
+    <string name="sorry_not_enough_coins">Sorry, you do not have enough coins!</string>
+    <string name="congrats_on_bin_upgrade">Congrats your coin has been upgraded!</string>
+    <string name="Congrats_your_trophy_has_been_upgraded">Congrats your trophy has been upgraded!</string>
+    <string name="Congrats_your_upgrades">Congrats on your milestone upgrade!</string>
 </resources>

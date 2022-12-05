@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.composting.MainActivity
@@ -16,8 +15,7 @@ import com.google.firebase.database.*
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit.DAYS
-import android.util.Log
-import com.google.firebase.database.ktx.getValue
+import com.google.android.material.snackbar.Snackbar
 
 
 class CompostingDetails : Fragment() {
@@ -57,11 +55,9 @@ class CompostingDetails : Fragment() {
                     binding.turnDaysText.text = "Turn in 7 days"
                     binding.turnDetailsDaysText.text =
                         "You should turn your compost in 7 days"
-                    Toast.makeText(
-                        context,
-                        "Compost has been turned!",
-                        Toast.LENGTH_LONG
-                    ).show()
+
+                    Snackbar.make(requireView(),
+                        getString(R.string.compost_has_been_turned), Snackbar.LENGTH_SHORT).show()
                 }
                 override fun onCancelled(databaseError: DatabaseError) {
                 }

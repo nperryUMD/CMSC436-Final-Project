@@ -5,7 +5,6 @@ import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.composting.R
@@ -35,19 +34,14 @@ class LoginFragment : Fragment(){
         val password: String = binding.password.text.toString()
 
         if (TextUtils.isEmpty(email)) {
-            Toast.makeText(
-                requireContext(),
-                getString(R.string.login_toast),
-                Toast.LENGTH_LONG
-            ).show()
+            Snackbar.make(requireView(),
+                getString(R.string.login_toast),Snackbar.LENGTH_SHORT).show()
             return
         }
         if (TextUtils.isEmpty(password)) {
-            Toast.makeText(
-                requireContext(),
-                getString(R.string.password_toast),
-                Toast.LENGTH_LONG
-            ).show()
+            Snackbar.make(requireView(),
+                getString(R.string.password_toast),Snackbar.LENGTH_SHORT).show()
+
             return
         }
 
@@ -57,24 +51,16 @@ class LoginFragment : Fragment(){
             .addOnCompleteListener { task ->
                 binding.progressBar.visibility = View.GONE
                 if (task.isSuccessful) {
-//                    Toast.makeText(
-//                        requireContext(),
-//                        "Login successful!",
-//                        Toast.LENGTH_LONG
-//                    ).show()
-
-                    Snackbar.make(requireView(),"Login successful!",Snackbar.LENGTH_LONG).show()
+                    Snackbar.make(requireView(),
+                        "Login successful!",Snackbar.LENGTH_SHORT).show()
 
 
                     findNavController().navigate(
                         R.id.action_loginFragment_to_dashboardFragment
                     )
                 } else {
-                    Toast.makeText(
-                        requireContext(),
-                        "Login failed! Please try again later",
-                        Toast.LENGTH_LONG
-                    ).show()
+                    Snackbar.make(requireView(),
+                        "Login failed! Please try again later!",Snackbar.LENGTH_SHORT).show()
                 }
             }
     }
