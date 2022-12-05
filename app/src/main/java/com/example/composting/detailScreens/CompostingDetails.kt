@@ -76,11 +76,11 @@ class CompostingDetails : Fragment() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // HEALTH CARD UPDATES
                 val healthInt: Int = dataSnapshot.child("compostHealth").getValue().toString().toInt()
-                if (healthInt > 5){
+                if (healthInt > 15){
                     binding.healthText.text = "Bad"
                     binding.healthText.setBackgroundColor(Color.parseColor("#f0554a"))
                     binding.substanceSuggestionText.text = "Your compost health is carbon-rich"
-                }else if (healthInt < -5){
+                }else if (healthInt < -15){
                     binding.healthText.text = "Bad"
                     binding.healthText.setBackgroundColor(Color.parseColor("#f0554a"))
                     binding.substanceSuggestionText.text = "Your compost health is nitrogen-rich"

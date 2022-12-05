@@ -12,7 +12,7 @@ class MainFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         var actionBar = (activity as MainActivity?)!!.supportActionBar
-        actionBar?.title = "Compost App"
+        actionBar?.title = "Composting Pals"
     }
     override fun onCreateView(
         inflater: LayoutInflater,

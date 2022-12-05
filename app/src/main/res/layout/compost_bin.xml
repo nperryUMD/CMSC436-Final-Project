@@ -35,7 +35,7 @@
 
             <TextView
                 android:id="@+id/leftCompostItemText"
-                android:layout_width="122dp"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
@@ -55,14 +55,17 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="230dp"
-            android:src="@drawable/compost_bin_pic" />
+            android:layout_height="200dp"
+            android:contentDescription="@string/compost_bin_image"
+            android:src="@drawable/compost_bin"
+            tools:ignore="ImageContrastCheck" />
 
         <Button
             android:id="@+id/compostingCardBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Explore more..." />
+            android:text="@string/explore_more"
+            tools:ignore="TextContrastCheck" />
 
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

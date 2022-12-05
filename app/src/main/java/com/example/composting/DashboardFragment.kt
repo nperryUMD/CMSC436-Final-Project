@@ -55,7 +55,7 @@ class DashboardFragment : Fragment() {
         val adapter = RecyclerViewAdapter(this.requireContext(), data)
 
 
-        database?.addValueEventListener(object : ValueEventListener {
+        database.addValueEventListener(object : ValueEventListener {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 binding.coinUpperText.text = "Coins: "  + dataSnapshot.child("coins").getValue().toString()

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Composting</string>
+    <string name="app_name">Composting Pals</string>
     <string name="logged_in_user_string">Now you are a logged in user of this app!</string>
     <string name="account_login_string">Account login</string>
     <string name="email_hint_string">Email</string>
@@ -37,4 +37,5 @@
     <string name="leaderboard">Leaderboard</string>
     <string name="see_how_you_stack_up">See how you stack up!</string>
     <string name="leaderboard_pic">leaderboard pic</string>
+    <string name="compost_bin_image">Compost bin image</string>
 </resources>
