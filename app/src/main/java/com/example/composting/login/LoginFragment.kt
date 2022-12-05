@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.composting.R
 import com.example.composting.databinding.LoginFragmentBinding
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginFragment : Fragment(){
@@ -56,11 +57,14 @@ class LoginFragment : Fragment(){
             .addOnCompleteListener { task ->
                 binding.progressBar.visibility = View.GONE
                 if (task.isSuccessful) {
-                    Toast.makeText(
-                        requireContext(),
-                        "Login successful!",
-                        Toast.LENGTH_LONG
-                    ).show()
+//                    Toast.makeText(
+//                        requireContext(),
+//                        "Login successful!",
+//                        Toast.LENGTH_LONG
+//                    ).show()
+
+                    Snackbar.make(requireView(),"Login successful!",Snackbar.LENGTH_LONG).show()
+
 
                     findNavController().navigate(
                         R.id.action_loginFragment_to_dashboardFragment
