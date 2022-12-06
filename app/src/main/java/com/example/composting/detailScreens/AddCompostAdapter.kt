@@ -69,9 +69,7 @@ class AddCompostAdapter(context: Context, list: ArrayList<CompostItems>, selecti
                         database.child("coins").setValue(newCoinValue)
 
                         //update trophy values and milestone when reach milestone
-                        if (dataSnapshot.child("milestoneProgress").value.toString()
-                                .toInt() >= 100
-                        ) {
+                        if (dataSnapshot.child("milestoneProgress").value.toString().toInt() >= 100) {
                             database.child("milestones").setValue(currMilestones + 1)
                             database.child("milestoneProgress").setValue(0)
                             database.child("trophies").setValue(trophies + (10 * trophyMultiplier))

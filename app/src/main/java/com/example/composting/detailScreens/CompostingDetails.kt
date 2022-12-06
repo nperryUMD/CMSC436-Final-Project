@@ -75,11 +75,11 @@ class CompostingDetails : Fragment() {
                 if (healthInt > 15){
                     binding.healthText.text = getString(R.string.Bad)
                     binding.healthText.setBackgroundColor(Color.parseColor("#f0554a"))
-                    binding.substanceSuggestionText.text = getString(R.string.Your_compost_health_is_carbon_rich)
+                    binding.substanceSuggestionText.text = getString(R.string.Your_compost_health_is_nitrogen_rich)
                 }else if (healthInt < -15){
                     binding.healthText.text = "Bad"
                     binding.healthText.setBackgroundColor(Color.parseColor("#f0554a"))
-                    binding.substanceSuggestionText.text = getString(R.string.Your_compost_health_is_nitrogen_rich)
+                    binding.substanceSuggestionText.text = getString(R.string.Your_compost_health_is_carbon_rich)
                 }else{
                     binding.healthText.text = "Great"
                     binding.healthText.setBackgroundColor(Color.parseColor("#50f04a"))
